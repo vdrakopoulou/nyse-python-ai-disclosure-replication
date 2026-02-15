@@ -21,3 +21,19 @@ The code reproduces the main text and appendix tables/figures from a single conf
 
    ```bash
    pip install pandas numpy scipy statsmodels pyyaml matplotlib openpyxl xlsxwriter
+
+
+2. Run the full replication:
+
+cd code
+python run_all.py
+# or: python run_all.py 00_config.yaml
+
+
+3. Outputs:
+
+data/analysis_results_MIN_REPLICATION.xlsx – main tables and diagnostics
+
+Updated PNG figures in figures/
+
+For more detail on the pipeline and sanity checks, see code/README.md.
