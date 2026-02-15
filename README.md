@@ -38,3 +38,5 @@ data/analysis_results_MIN_REPLICATION.xlsx – main tables and diagnostics
 Updated PNG figures in figures/
 
 For more detail on the pipeline and sanity checks, see code/README.md.
+
+https://doi.org/10.5281/zenodo.18646800
