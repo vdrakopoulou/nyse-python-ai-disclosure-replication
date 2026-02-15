@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite it as follows."
+title: "Replication package for: Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"
+type: software
+
+authors:
+  - family-names: "Drakopoulou"
+    given-names: "Veliota"
+    affiliation: "Higher Colleges of Technology; Embry-Riddle Aeronautical University"
+
+version: "1.0.0"
+doi: "10.5281/zenodo.18646800"
+date-released: "2026-02-15"
+license: "MIT"
+repository-code: "https://github.com/vdrakopoulou/nyse-python-ai-disclosure-replication"
+
+keywords:
+  - "Python"
+  - "AI"
+  - "NYSE"
+  - "financial institutions"
+  - "disclosure"
+  - "Outcome Claims Index"
+  - "replication"
+
+abstract: >
+  Blinded replication archive for the NYSE finance study on Python-enabled AI
+  disclosure. Includes a harmonized roster of 180 NYSE financial institutions,
+  sentence-level evidence with Outcome Claims Index flags, language-benchmark
+  counts, the appendix workbook with all statistical tables, and the scripts and
+  configuration file used to reproduce the main and appendix results.
+
+preferred-citation:
+  type: article
+  title: "Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"
+  authors:
+    - family-names: "Drakopoulou"
+      given-names: "Veliota"
+  journal: "Financial Innovation"
+  year: 2026
