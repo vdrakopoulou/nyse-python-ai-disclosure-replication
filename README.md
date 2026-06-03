@@ -1,10 +1,3 @@
-"""
-
-"Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"
-
-Author: Veliota Drakopoulou
-"""
-
 from pathlib import Path
 
 [![SSRN](https://img.shields.io/badge/SSRN-6267458-blue)](https://ssrn.com/abstract=6267458)
