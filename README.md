@@ -1,218 +1,261 @@
+#!/usr/bin/env python3
 """
-Generate a polished GitHub README.md for the paper:
-"Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"
+Generate a polished GitHub README for the research project:
+Public Signals of Python-Enabled AI in Finance.
 
-Author: Veliota Drakopoulou
+This version intentionally avoids publishing fixed findings, percentages,
+or outcome conclusions because the research is being revised.
+
+Usage:
+    python generate_github_readme_fancy.py
+    python generate_github_readme_fancy.py --output README.md
 """
 
+from __future__ import annotations
+
+import argparse
 from pathlib import Path
+from textwrap import dedent
 
 
-README_TEXT = """# 📊 Public Signals of Python-Enabled AI in Finance
-### Disclosure Patterns and Outcome Claims in NYSE Institutions
+PROJECT_TITLE = "Public Signals of Python-Enabled AI in Finance"
+PROJECT_SUBTITLE = "Disclosure Patterns and Outcome Claims in NYSE Institutions"
+AUTHOR = "Veliota Drakopoulou"
+AFFILIATIONS = "Higher Colleges of Technology; Embry-Riddle Aeronautical University"
+SSRN_URL = "https://ssrn.com/abstract=6267458"
+SSRN_DOI = "10.2139/ssrn.6267458"
+ZENODO_DOI = "10.5281/zenodo.18646800"
+ZENODO_URL = f"https://doi.org/{ZENODO_DOI}"
 
-[![SSRN](https://img.shields.io/badge/SSRN-6267458-blue)](https://ssrn.com/abstract=6267458)
-[![DOI](https://img.shields.io/badge/DOI-10.2139%2Fssrn.6267458-green)](http://dx.doi.org/10.2139/ssrn.6267458)
-[![Zenodo](https://img.shields.io/badge/Zenodo-18646800-orange)](https://doi.org/10.5281/zenodo.18646800)
-[![Python](https://img.shields.io/badge/Python-AI%20Disclosure-yellow)]()
-[![Open Science](https://img.shields.io/badge/Open%20Science-Reproducible-success)]()
 
----
+def build_readme() -> str:
+    """Return the complete README.md content as a string."""
 
-## Overview
+    return dedent(
+        f"""
+        # Public Signals of Python-Enabled AI in Finance
 
-Artificial Intelligence (AI) is reshaping financial services, yet public evidence of AI implementation remains fragmented, inconsistent, and difficult to verify. At the same time, Python has become the dominant programming language for analytics, machine learning, and model deployment across finance.
+        ## Disclosure Patterns and Outcome Claims in NYSE Institutions
 
-This repository supports the paper **"Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"** by providing a replication-ready framework for mapping Python-enabled AI disclosure across NYSE-listed financial institutions.
+        [![SSRN](https://img.shields.io/badge/SSRN-6267458-1f77b4?style=for-the-badge)]({SSRN_URL})
+        [![DOI](https://img.shields.io/badge/DOI-{SSRN_DOI.replace('-', '--').replace('/', '%2F')}-2ca02c?style=for-the-badge)](https://dx.doi.org/{SSRN_DOI})
+        [![Zenodo](https://img.shields.io/badge/Zenodo-{ZENODO_DOI.replace('-', '--').replace('/', '%2F')}-ff7f0e?style=for-the-badge)]({ZENODO_URL})
+        [![Python](https://img.shields.io/badge/Python-Reproducible%20Research-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
+        [![Open Science](https://img.shields.io/badge/Open%20Science-Replication%20Ready-6f42c1?style=for-the-badge)]()
 
-The study examines **180 NYSE financial institutions** using a triangulated corpus of:
+        ---
 
-- Regulatory filings
-- Employer and recruitment portals
-- Corporate communications
-- Investor-facing materials
-- Sectoral and financial press sources
+        > A reproducible research framework for studying public disclosure of Python-enabled artificial intelligence in NYSE-listed financial institutions.
 
-Each institution is classified into one of three disclosure states:
+        ## Project Overview
 
-1. **Explicit Python disclosure**
-2. **Indirect AI disclosure only**
-3. **No observable AI/Python disclosure**
+        Artificial intelligence is increasingly embedded in financial services, yet public evidence of AI use remains fragmented across regulatory filings, corporate communications, recruitment platforms, technology blogs, and sectoral press.
 
----
+        This repository supports the research paper **{PROJECT_TITLE}: {PROJECT_SUBTITLE}**. It provides a transparent workflow for identifying and classifying public signals of Python-enabled AI capability among New York Stock Exchange financial institutions.
 
-## Key Findings
+        This GitHub version is designed as a research and replication hub. It focuses on the methodology, taxonomy, code structure, and reproducible workflow rather than fixed findings while the research is being updated.
 
-| Disclosure Category | Share of Firms |
-|---|---:|
-| Explicit Python Disclosure | **76.7%** |
-| Indirect AI Disclosure Only | **2.2%** |
-| No Public Disclosure | **21.1%** |
+        ---
 
-A visibility-weighted analysis produces an effective explicit disclosure share of:
+        ## Research Objectives
 
-> **Visibility-Weighted Explicit Python Share = 0.629**
+        This project investigates how NYSE-listed financial institutions publicly communicate Python-enabled AI capabilities.
+
+        The study seeks to:
 
----
+        - identify public references to Python, AI, machine learning, analytics, and related software capabilities;
+        - classify firms into transparent disclosure states using a reproducible coding framework;
+        - detect named Python libraries and map them to AI capability domains;
+        - compare disclosure patterns across financial subsectors;
+        - evaluate whether firms attach quantified outcome claims to AI and software disclosures;
+        - provide a reusable pipeline for future AI-disclosure research.
 
-## Technology Stack Identified
+        The project does **not** claim to measure internal AI adoption directly. It measures publicly observable disclosure signals.
 
-The analysis shows a common Python analytics backbone across financial institutions:
+        ---
 
-- **pandas**
-- **NumPy**
-- **scikit-learn**
+        ## Disclosure Framework
 
-Additional libraries are mapped to specialized finance-related AI tasks, including text analytics, tabular risk modeling, payments analytics, market microstructure analysis, optimization, probabilistic modeling, and visualization.
+        Each institution can be coded into one of three disclosure states:
+
+        | Disclosure State | Description |
+        |---|---|
+        | Explicit Python | Public materials directly reference Python or Python libraries. |
+        | Indirect AI | Public materials reference AI, machine learning, automation, or analytics without direct Python evidence. |
+        | No Observable Disclosure | No qualifying public signal is identified within the evidence frame. |
 
----
+        ---
+
+        ## Python Library Mapping
 
-## Analytical Dimensions
+        Detected libraries are mapped to seven analytical dimensions:
 
-Detected Python libraries are mapped into seven analytical dimensions:
+        | Dimension | Example Libraries |
+        |---|---|
+        | Natural Language Processing | spaCy, NLTK, Transformers |
+        | Machine Learning | scikit-learn, XGBoost, LightGBM |
+        | Deep Learning | TensorFlow, PyTorch, Keras |
+        | Reinforcement Learning | Stable-Baselines, RLlib |
+        | Probabilistic Modeling | PyMC, Stan, NumPyro |
+        | Optimization | SciPy, CVXPY, PuLP |
+        | Visualization | Matplotlib, Plotly, Seaborn |
 
-| Dimension | Example Libraries |
-|---|---|
-| Natural Language Processing | spaCy, NLTK, Transformers |
-| Machine Learning | scikit-learn, XGBoost |
-| Deep Learning | TensorFlow, PyTorch |
-| Reinforcement Learning | Stable-Baselines, RLlib |
-| Probabilistic Modeling | PyMC, Stan |
-| Optimization | SciPy Optimize, CVXPY |
-| Visualization | Matplotlib, Plotly, Seaborn |
+        ---
 
----
+        ## Outcome Claims Index
 
-## Outcome Claims Index
+        The project includes an **Outcome Claims Index**, or **OCI**, for identifying quantified performance assertions in public disclosures.
 
-The paper introduces an **Outcome Claims Index (OCI)** to identify quantified public claims about AI performance, such as:
+        Examples of possible OCI-style claims include:
 
-- Risk reduction
-- Accuracy gains
-- Fraud detection improvements
-- Processing-time reductions
-- Cost or efficiency improvements
+        - reduced risk exposure;
+        - improved fraud detection;
+        - faster processing;
+        - accuracy gains;
+        - cost reductions;
+        - productivity improvements.
 
-The findings show that quantified outcome claims are extremely rare across subsectors:
-
-> **OCI values are effectively zero across subsectors.**
-
-This suggests that while Python-enabled AI capabilities are widely signaled, measurable performance outcomes are rarely disclosed in the public record.
-
----
-
-## Methodology
-
-### Sample
-
-- **180 NYSE-listed financial institutions**
-- Observation window through **January 2026**
-
-### Evidence Triangulation
-
-Sources are combined across regulatory, corporate, labor-market, and sectoral evidence channels to improve robustness and reduce reliance on a single disclosure venue.
-
-### Library Detection
-
-Named Python libraries are detected through:
-
-- Sentence-level dictionary matching
-- Contextual filters
-- Manual validation
-- Domain mapping into AI capability categories
-
-### Statistical Analysis
-
-The study applies:
-
-- Descriptive disclosure analysis
-- Subsector comparison
-- Visibility-weighted disclosure estimation
-- Rare-event inference
-- Frequentist and Bayesian approaches for sparse outcome claims
-
----
-
-## Repository Structure
-
-```text
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── disclosure_classifications/
-│
-├── notebooks/
-│   ├── exploratory_analysis.ipynb
-│   ├── oci_estimation.ipynb
-│   └── visualization.ipynb
-│
-├── src/
-│   ├── preprocessing/
-│   ├── disclosure_detection/
-│   ├── library_mapping/
-│   ├── oci_analysis/
-│   └── visualization/
-│
-├── figures/
-├── outputs/
-├── paper/
-└── README.md
-```
-
----
-
-## Reproducibility
-
-This project follows open-science principles. The complete replication package, including scripts for preprocessing, model estimation, and figure generation, is permanently archived on Zenodo.
-
-### Zenodo Archive
-
-https://doi.org/10.5281/zenodo.18646800
-
-### SSRN Paper
-
-https://ssrn.com/abstract=6267458
-
----
-
-## Citation
-
-```bibtex
-@article{Drakopoulou2025PythonFinanceAI,
-  author = {Drakopoulou, Veliota},
-  title = {Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions},
-  year = {2025},
-  institution = {Higher Colleges of Technology and Embry-Riddle Aeronautical University},
-  doi = {10.2139/ssrn.6267458},
-  url = {https://ssrn.com/abstract=6267458}
-}
-```
-
----
-
-## Author
-
-**Veliota Drakopoulou**  
-Higher Colleges of Technology  
-Embry-Riddle Aeronautical University
-
----
-
-## Keywords
-
-`NYSE` · `Financial Institutions` · `Python` · `Artificial Intelligence` · `Disclosure` · `Outcome Claims Index` · `Replication` · `Open Science`
-"""
-
-
-def write_readme(output_path: str = "README.md") -> Path:
-    """Write the GitHub README file and return the created path."""
-    path = Path(output_path)
-    path.write_text(README_TEXT, encoding="utf-8")
-    return path
+        The index is intended to separate general AI narratives from measurable claims placed in the public record.
+
+        ---
+
+        ## Suggested Repository Structure
+
+        ```text
+        .
+        ├── README.md
+        ├── LICENSE
+        ├── requirements.txt
+        ├── pyproject.toml
+        │
+        ├── data/
+        │   ├── raw/
+        │   ├── interim/
+        │   ├── processed/
+        │   └── dictionaries/
+        │
+        ├── notebooks/
+        │   ├── 01_exploration.ipynb
+        │   ├── 02_disclosure_coding.ipynb
+        │   ├── 03_library_mapping.ipynb
+        │   └── 04_oci_analysis.ipynb
+        │
+        ├── src/
+        │   ├── collect/
+        │   ├── clean/
+        │   ├── classify/
+        │   ├── detect_libraries/
+        │   ├── oci/
+        │   ├── statistics/
+        │   └── visualization/
+        │
+        ├── outputs/
+        │   ├── tables/
+        │   ├── figures/
+        │   └── logs/
+        │
+        ├── paper/
+        │   ├── manuscript.pdf
+        │   └── citation.bib
+        │
+        └── tests/
+        ```
+
+        ---
+
+        ## Reproducibility Workflow
+
+        A typical workflow is:
+
+        ```bash
+        git clone <repository-url>
+        cd python-enabled-ai-finance-disclosure
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install -r requirements.txt
+        python -m src.clean.prepare_corpus
+        python -m src.classify.code_disclosure_states
+        python -m src.detect_libraries.match_python_libraries
+        python -m src.oci.compute_oci
+        python -m src.visualization.make_figures
+        ```
+
+        Windows PowerShell users can activate the environment with:
+
+        ```powershell
+        .venv\\Scripts\\Activate.ps1
+        ```
+
+        ---
+
+        ## Open Science Materials
+
+        The replication package is archived on Zenodo:
+
+        - Zenodo DOI: [{ZENODO_DOI}]({ZENODO_URL})
+        - SSRN paper: [{SSRN_URL}]({SSRN_URL})
+        - SSRN DOI: [{SSRN_DOI}](https://dx.doi.org/{SSRN_DOI})
+
+        ---
+
+        ## Citation
+
+        ```bibtex
+        @article{{Drakopoulou2025PythonFinanceAI,
+          author = {{{AUTHOR}}},
+          title = {{{PROJECT_TITLE}: {PROJECT_SUBTITLE}}},
+          year = {{2025}},
+          institution = {{{AFFILIATIONS}}},
+          doi = {{{SSRN_DOI}}},
+          url = {{{SSRN_URL}}}
+        }}
+        ```
+
+        ---
+
+        ## Author
+
+        **{AUTHOR}**  
+        {AFFILIATIONS}
+
+        ---
+
+        ## Open Science Statement
+
+        This project follows open-science principles. Code, documentation, and replication materials are organized to support transparency, reproducibility, and future research on AI disclosure in financial services.
+
+        ---
+
+        ## Status Notice
+
+        This repository is under active revision. Numerical results, tables, and outcome claims should be treated as provisional until the revised research workflow is finalized.
+        """
+    ).strip() + "\n"
+
+
+def write_readme(output_path: Path) -> None:
+    """Write the README to disk."""
+    output_path.write_text(build_readme(), encoding="utf-8")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Generate a polished GitHub README for the Python-enabled AI finance disclosure project."
+    )
+    parser.add_argument(
+        "--output",
+        default="README.md",
+        help="Output README path. Default: README.md",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    output_path = Path(args.output).resolve()
+    write_readme(output_path)
+    print(f"README generated successfully: {output_path}")
 
 
 if __name__ == "__main__":
-    created_file = write_readme()
-    print(f"README generated successfully: {created_file.resolve()}")
-
-
+    main()
