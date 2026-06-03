@@ -1,15 +1,11 @@
 """
-Generate a polished GitHub README.md for the paper:
+
 "Public Signals of Python-Enabled AI in Finance: Disclosure Patterns and Outcome Claims in NYSE Institutions"
 
 Author: Veliota Drakopoulou
 """
 
 from pathlib import Path
-
-
-README_TEXT = """# 📊 Public Signals of Python-Enabled AI in Finance
-### Disclosure Patterns and Outcome Claims in NYSE Institutions
 
 [![SSRN](https://img.shields.io/badge/SSRN-6267458-blue)](https://ssrn.com/abstract=6267458)
 [![DOI](https://img.shields.io/badge/DOI-10.2139%2Fssrn.6267458-green)](http://dx.doi.org/10.2139/ssrn.6267458)
