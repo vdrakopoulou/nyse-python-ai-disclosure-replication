@@ -1,4 +1,3 @@
-from pathlib import Path
 
 [![SSRN](https://img.shields.io/badge/SSRN-6267458-blue)](https://ssrn.com/abstract=6267458)
 [![DOI](https://img.shields.io/badge/DOI-10.2139%2Fssrn.6267458-green)](http://dx.doi.org/10.2139/ssrn.6267458)
