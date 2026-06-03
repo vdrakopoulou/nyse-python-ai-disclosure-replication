@@ -190,12 +190,9 @@ Embry-Riddle Aeronautical University
 ## Keywords
 
 `NYSE` · `Financial Institutions` · `Python` · `Artificial Intelligence` · `Disclosure` · `Outcome Claims Index` · `Replication` · `Open Science`
-"""
 
 
 
 
 
-if __name__ == "__main__":
-    created_file = write_readme()
-    print(f"README generated successfully: {created_file.resolve()}")
+
