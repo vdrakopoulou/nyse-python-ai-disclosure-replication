@@ -1,28 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Generate a polished GitHub README.md for:
-Public Signals of Python-Enabled AI in Finance
-
-This version intentionally removes all findings, percentages, and fixed results
-because the research is being revised.
-
-Run:
-    python generate_readme.py
-    python generate_readme.py --output README.md
-    python generate_readme.py --preview
-
-On Windows, try:
-    py generate_readme.py --output README.md
-"""
-
-from __future__ import annotations
-
-import argparse
-from pathlib import Path
-from textwrap import dedent
-
-
 PROJECT_TITLE = "Public Signals of Python-Enabled AI in Finance"
 PROJECT_SUBTITLE = "Disclosure Patterns and Outcome Claims in NYSE Institutions"
 AUTHOR = "Veliota Drakopoulou"
