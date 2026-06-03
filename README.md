@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Generate a polished GitHub README for the research project:
-Public Signals of Python-Enabled AI in Finance.
+Generate a polished GitHub README.md for:
+Public Signals of Python-Enabled AI in Finance
 
-This version intentionally avoids publishing fixed findings, percentages,
-or outcome conclusions because the research is being revised.
+This version intentionally removes all findings, percentages, and fixed results
+because the research is being revised.
 
-Usage:
-    python generate_github_readme_fancy.py
-    python generate_github_readme_fancy.py --output README.md
+Run:
+    python generate_readme.py
+    python generate_readme.py --output README.md
+    python generate_readme.py --preview
+
+On Windows, try:
+    py generate_readme.py --output README.md
 """
 
 from __future__ import annotations
@@ -28,32 +33,45 @@ ZENODO_DOI = "10.5281/zenodo.18646800"
 ZENODO_URL = f"https://doi.org/{ZENODO_DOI}"
 
 
+def shield(label: str, message: str, color: str, link: str = "") -> str:
+    """Return a GitHub badge in Markdown format."""
+    safe_label = label.replace("-", "--").replace(" ", "%20")
+    safe_message = message.replace("-", "--").replace(" ", "%20").replace("/", "%2F")
+    badge = f"https://img.shields.io/badge/{safe_label}-{safe_message}-{color}?style=for-the-badge"
+    return f"[![{label}]({badge})]({link})" if link else f"![{label}]({badge})"
+
+
 def build_readme() -> str:
-    """Return the complete README.md content as a string."""
+    """Build and return the complete README content."""
+    ssrn_badge = shield("SSRN", "6267458", "1f77b4", SSRN_URL)
+    doi_badge = shield("DOI", SSRN_DOI, "2ca02c", f"https://dx.doi.org/{SSRN_DOI}")
+    zenodo_badge = shield("Zenodo", ZENODO_DOI, "ff7f0e", ZENODO_URL)
+    python_badge = shield("Python", "Reproducible Research", "3776AB")
+    open_science_badge = shield("Open Science", "Replication Ready", "6f42c1")
 
     return dedent(
         f"""
-        # Public Signals of Python-Enabled AI in Finance
+        # {PROJECT_TITLE}
 
-        ## Disclosure Patterns and Outcome Claims in NYSE Institutions
+        ## {PROJECT_SUBTITLE}
 
-        [![SSRN](https://img.shields.io/badge/SSRN-6267458-1f77b4?style=for-the-badge)]({SSRN_URL})
-        [![DOI](https://img.shields.io/badge/DOI-{SSRN_DOI.replace('-', '--').replace('/', '%2F')}-2ca02c?style=for-the-badge)](https://dx.doi.org/{SSRN_DOI})
-        [![Zenodo](https://img.shields.io/badge/Zenodo-{ZENODO_DOI.replace('-', '--').replace('/', '%2F')}-ff7f0e?style=for-the-badge)]({ZENODO_URL})
-        [![Python](https://img.shields.io/badge/Python-Reproducible%20Research-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
-        [![Open Science](https://img.shields.io/badge/Open%20Science-Replication%20Ready-6f42c1?style=for-the-badge)]()
+        {ssrn_badge}
+        {doi_badge}
+        {zenodo_badge}
+        {python_badge}
+        {open_science_badge}
 
         ---
 
-        > A reproducible research framework for studying public disclosure of Python-enabled artificial intelligence in NYSE-listed financial institutions.
+        > A reproducible research framework for studying public signals of Python-enabled artificial intelligence in NYSE-listed financial institutions.
 
         ## Project Overview
 
         Artificial intelligence is increasingly embedded in financial services, yet public evidence of AI use remains fragmented across regulatory filings, corporate communications, recruitment platforms, technology blogs, and sectoral press.
 
-        This repository supports the research paper **{PROJECT_TITLE}: {PROJECT_SUBTITLE}**. It provides a transparent workflow for identifying and classifying public signals of Python-enabled AI capability among New York Stock Exchange financial institutions.
+        This repository supports the research paper **{PROJECT_TITLE}: {PROJECT_SUBTITLE}**. It provides a transparent workflow for identifying, classifying, and analyzing public signals of Python-enabled AI capability among New York Stock Exchange financial institutions.
 
-        This GitHub version is designed as a research and replication hub. It focuses on the methodology, taxonomy, code structure, and reproducible workflow rather than fixed findings while the research is being updated.
+        This GitHub version is designed as a research and replication hub. It focuses on methodology, taxonomy, code structure, and reproducible workflow rather than fixed findings while the study is being updated.
 
         ---
 
@@ -123,49 +141,47 @@ def build_readme() -> str:
 
         ```text
         .
-        ├── README.md
-        ├── LICENSE
-        ├── requirements.txt
-        ├── pyproject.toml
-        │
-        ├── data/
-        │   ├── raw/
-        │   ├── interim/
-        │   ├── processed/
-        │   └── dictionaries/
-        │
-        ├── notebooks/
-        │   ├── 01_exploration.ipynb
-        │   ├── 02_disclosure_coding.ipynb
-        │   ├── 03_library_mapping.ipynb
-        │   └── 04_oci_analysis.ipynb
-        │
-        ├── src/
-        │   ├── collect/
-        │   ├── clean/
-        │   ├── classify/
-        │   ├── detect_libraries/
-        │   ├── oci/
-        │   ├── statistics/
-        │   └── visualization/
-        │
-        ├── outputs/
-        │   ├── tables/
-        │   ├── figures/
-        │   └── logs/
-        │
-        ├── paper/
-        │   ├── manuscript.pdf
-        │   └── citation.bib
-        │
-        └── tests/
+        |-- README.md
+        |-- LICENSE
+        |-- requirements.txt
+        |-- pyproject.toml
+        |
+        |-- data/
+        |   |-- raw/
+        |   |-- interim/
+        |   |-- processed/
+        |   `-- dictionaries/
+        |
+        |-- notebooks/
+        |   |-- 01_exploration.ipynb
+        |   |-- 02_disclosure_coding.ipynb
+        |   |-- 03_library_mapping.ipynb
+        |   `-- 04_oci_analysis.ipynb
+        |
+        |-- src/
+        |   |-- collect/
+        |   |-- clean/
+        |   |-- classify/
+        |   |-- detect_libraries/
+        |   |-- oci/
+        |   |-- statistics/
+        |   `-- visualization/
+        |
+        |-- outputs/
+        |   |-- tables/
+        |   |-- figures/
+        |   `-- logs/
+        |
+        |-- paper/
+        |   |-- manuscript.pdf
+        |   `-- citation.bib
+        |
+        `-- tests/
         ```
 
         ---
 
         ## Reproducibility Workflow
-
-        A typical workflow is:
 
         ```bash
         git clone <repository-url>
@@ -180,7 +196,7 @@ def build_readme() -> str:
         python -m src.visualization.make_figures
         ```
 
-        Windows PowerShell users can activate the environment with:
+        Windows PowerShell activation:
 
         ```powershell
         .venv\\Scripts\\Activate.ps1
@@ -189,8 +205,6 @@ def build_readme() -> str:
         ---
 
         ## Open Science Materials
-
-        The replication package is archived on Zenodo:
 
         - Zenodo DOI: [{ZENODO_DOI}]({ZENODO_URL})
         - SSRN paper: [{SSRN_URL}]({SSRN_URL})
@@ -228,38 +242,36 @@ def build_readme() -> str:
 
         ## Status Notice
 
-        This repository is under active revision. Numerical results, tables, and outcome claims should be treated as provisional until the revised research workflow is finalized.
+        This repository is under active revision. Numerical results, tables, percentages, and outcome claims should be treated as provisional until the revised research workflow is finalized.
         """
     ).strip() + "\n"
 
 
-def write_readme(output_path: Path) -> None:
-    """Write the README to disk."""
-    output_path.write_text(build_readme(), encoding="utf-8")
+def write_file(output_path: Path, content: str) -> None:
+    """Write content to output_path, creating parent folders when needed."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(content, encoding="utf-8")
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Generate a polished GitHub README for the Python-enabled AI finance disclosure project."
-    )
-    parser.add_argument(
-        "--output",
-        default="README.md",
-        help="Output README path. Default: README.md",
-    )
+    parser = argparse.ArgumentParser(description="Generate a polished GitHub README.md file.")
+    parser.add_argument("--output", default="README.md", help="Output path. Default: README.md")
+    parser.add_argument("--preview", action="store_true", help="Print README content instead of writing a file")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    output_path = Path(args.output).resolve()
-    write_readme(output_path)
+    content = build_readme()
+
+    if args.preview:
+        print(content)
+        return
+
+    output_path = Path(args.output).expanduser().resolve()
+    write_file(output_path, content)
     print(f"README generated successfully: {output_path}")
 
 
 if __name__ == "__main__":
     main()
-       
-
-       
-
