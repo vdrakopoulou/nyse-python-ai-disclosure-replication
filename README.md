@@ -193,11 +193,7 @@ Embry-Riddle Aeronautical University
 """
 
 
-def write_readme(output_path: str = "README.md") -> Path:
-    """Write the GitHub README file and return the created path."""
-    path = Path(output_path)
-    path.write_text(README_TEXT, encoding="utf-8")
-    return path
+
 
 
 if __name__ == "__main__":
